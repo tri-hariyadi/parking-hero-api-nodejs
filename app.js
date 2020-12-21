@@ -19,9 +19,13 @@ require('./initDB');
 
 const userManagement = require('./src/routes/userManagement');
 const parkingArea = require('./src/routes/parkingArea');
+const vehicle = require('./src/routes/vehicle');
+const saldo = require('./src/routes/SaldoRoute');
 
 app.use('/api/v1/parkingHero/', userManagement);
-app.use('/api/v1/parkingHero/', parkingArea);
+app.use('/api/v1/parkingHero/parkingarea', parkingArea);
+app.use('/api/v1/parkingHero/vehicle', vehicle);
+app.use('/api/v1/parkingHero/saldo', saldo);
 
 //404 handler and pass to error handler
 app.use((req, res, next) => {
@@ -30,6 +34,7 @@ app.use((req, res, next) => {
 
 //Error handler
 app.use((err, req, res, next) => {
+  console.log('error disisni');
   res.status(err.status || 500);
   res.send({
     error: {

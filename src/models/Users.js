@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
 const userScheme = new mongoose.Schema({
   username: {
@@ -21,6 +22,13 @@ const userScheme = new mongoose.Schema({
     required: true,
     minlength: 8
   },
+  saldoId: {
+    type: ObjectId,
+  },
+  vehicleId: [{
+    type: ObjectId,
+    ref: 'Vehicle'
+  }]
 });
 
 module.exports = mongoose.model('User', userScheme);

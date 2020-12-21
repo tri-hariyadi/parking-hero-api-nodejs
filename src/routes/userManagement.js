@@ -13,7 +13,7 @@ router.use(function (req, res, next) {
   );
   next();
 });
-console.log(verifySignUp.checkDuplicateUsernameOrEmail);
+
 router.post('/register', [verifySignUp.checkDuplicateUsernameOrEmail], userManagement.registerUser);
 router.post('/login', userManagement.loginUser);
 
